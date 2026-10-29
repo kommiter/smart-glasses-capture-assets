@@ -1,0 +1,28 @@
+{
+  "name": "Smart glasses capture guides",
+  "version": 1,
+  "canvas": {
+    "width": 960,
+    "height": 600
+  },
+  "background": "transparent",
+  "opacityBakedIn": 0.55,
+  "usage": "Use at opacity 1; opacity 0.55 is already baked into each asset. Fit with object-fit: contain. No background removal is needed.",
+  "views": {
+    "front": {
+      "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-front.png",
+      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-front.svg",
+      "direction": "front"
+    },
+    "side": {
+      "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-side.png",
+      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-side.svg",
+      "direction": "side"
+    },
+    "back": {
+      "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-back.png",
+      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-back.svg",
+      "direction": "Rear view from wearer side; unfold both temples"
+    }
+  }
+}
