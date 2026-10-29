@@ -1,6 +1,6 @@
 {
   "name": "Smart glasses capture guides",
-  "version": 5,
+  "version": 6,
   "canvas": {
     "width": 960,
     "height": 600
@@ -25,6 +25,31 @@
     "right-side": {
       "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-right-side.png",
       "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-right-side.svg"
+    }
+  },
+  "variants": {
+    "black": {
+      "color": "#000000",
+      "opacityBakedIn": 0.55,
+      "cameraDetails": "Two circular camera marks at the outer front corners.",
+      "views": {
+        "front": {
+          "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-front-black.png",
+          "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-front-black.svg"
+        },
+        "back": {
+          "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-back-black.png",
+          "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-back-black.svg"
+        },
+        "left-side": {
+          "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-left-side-black.png",
+          "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-left-side-black.svg"
+        },
+        "right-side": {
+          "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-right-side-black.png",
+          "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-right-side-black.svg"
+        }
+      }
     }
   },
   "legacyAliases": {

@@ -25,15 +25,20 @@ const leftSide =
   filled('near-temple', 'M185 215 L659 221 Q718 224 741 265 L803 366 Q814 384 801 391 Q786 399 775 380 L711 292 Q697 273 667 272 L183 263 Z');
 const rightSide = `<g transform="translate(960 0) scale(-1 1)">${leftSide}</g>`;
 const views = {front, back, 'left-side': leftSide, 'right-side': rightSide};
+const blackViews = Object.fromEntries(Object.entries(views).map(([name, body]) => [name, body.replaceAll('fill="white"', 'fill="#000000"')]));
+// Transparent camera rings stay legible on any light camera feed, without white patches.
+const cameras = [145, 815];
+const cameraMask = `<defs><mask id="front-cameras" maskUnits="userSpaceOnUse" x="0" y="0" width="960" height="600"><rect width="960" height="600" fill="white"/>${cameras.map(x => `<circle cx="${x}" cy="210" r="11" fill="black"/><circle cx="${x}" cy="210" r="7" fill="white"/>`).join('')}</mask></defs>`;
+blackViews.front = `${cameraMask}<g mask="url(#front-cameras)">${blackViews.front}${cameras.map(x => `<circle cx="${x}" cy="210" r="7" fill="#000000"/>`).join('')}</g>`;
 const svg = body => `<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600"><g opacity="0.55">${body}</g></svg>`;
 
 async function main() {
   const manifest = {
-    name: 'Smart glasses capture guides', version: 5,
+    name: 'Smart glasses capture guides', version: 6,
     canvas: {width: 960, height: 600}, background: 'transparent', opacityBakedIn: 0.55,
     usage: 'Use at opacity 1. Opacity 0.55 is baked in. Fit with object-fit: contain.',
     sideConvention: 'Left and right refer to the wearer. Left-side points left; right-side points right. These generic guides are mirrored.',
-    views: {}, legacyAliases: {'side': 'left-side'}
+    views: {}, variants: {black: {color: '#000000', opacityBakedIn: 0.55, cameraDetails: 'Two circular camera marks at the outer front corners.', views: {}}}, legacyAliases: {'side': 'left-side'}
   };
   for (const [name, body] of Object.entries(views)) {
     const markup = svg(body);
@@ -43,6 +48,17 @@ async function main() {
   }
   // Keep existing integrations working, while documenting the explicit side names.
   for (const ext of ['svg', 'png']) fs.copyFileSync(path.join(root, `assets/glasses-left-side.${ext}`), path.join(root, `assets/glasses-side.${ext}`));
+  for (const [name, body] of Object.entries(blackViews)) {
+    const markup = svg(body);
+    fs.writeFileSync(path.join(root, `assets/glasses-${name}-black.svg`), markup);
+    await sharp(Buffer.from(markup)).png().toFile(path.join(root, `assets/glasses-${name}-black.png`));
+    manifest.variants.black.views[name] = {png: `${remote}/assets/glasses-${name}-black.png`, svg: `${remote}/assets/glasses-${name}-black.svg`};
+  }
+  const blackPreview = `<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1020"><rect width="1440" height="1020" fill="#e7ebef"/><text x="50" y="55" fill="#253241" font-size="26" font-family="Arial,sans-serif">SMART GLASSES / BLACK CAPTURE GUIDES</text>${Object.entries(blackViews).map(([name, body], i) => {
+    const x = 30 + (i % 2) * 705, y = 90 + Math.floor(i / 2) * 455;
+    return `<rect x="${x}" y="${y}" width="675" height="380" rx="24" fill="#ffffff"/><g transform="translate(${x},${y-15}) scale(0.703125)" opacity="0.55">${body}</g><text x="${x+337.5}" y="${y+418}" text-anchor="middle" fill="#465768" font-size="21" font-family="Arial,sans-serif">${name.toUpperCase().replace('-', ' ')}</text>`;
+  }).join('')}</svg>`;
+  await sharp(Buffer.from(blackPreview)).png().toFile(path.join(root, 'preview-black.png'));
   const preview = `<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1020"><rect width="1440" height="1020" fill="#18232d"/><text x="50" y="55" fill="#eff4f7" font-size="26" font-family="Arial,sans-serif">SMART GLASSES / CAPTURE GUIDES v5</text>${Object.entries(views).map(([name, body], i) => {
     const x = 30 + (i % 2) * 705, y = 90 + Math.floor(i / 2) * 455;
     return `<rect x="${x}" y="${y}" width="675" height="380" rx="24" fill="#2c3b48"/><g transform="translate(${x},${y-15}) scale(0.703125)" opacity="0.55">${body}</g><text x="${x+337.5}" y="${y+418}" text-anchor="middle" fill="#b7c8d7" font-size="21" font-family="Arial,sans-serif">${name.toUpperCase().replace('-', ' ')}</text>`;
