@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600"><g fill="none" stroke="white" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" opacity="0.55">
-  <path d="M193 204 L178 345 Q176 368 160 379 L140 230 Q138 204 156 195 Q171 189 193 204 Z" fill="white" fill-opacity="0.08"/>
-  <path d="M191 216 L659 222 Q718 225 741 266 L803 367 Q811 382 800 389 Q787 395 776 378 L712 291 Q698 272 667 269 L189 262 Z" fill="white" fill-opacity="0.12"/>
-  <path d="M177 202 Q207 162 245 161 L626 174 Q656 175 677 203 L723 266" stroke-width="10"/>
-  <path d="M214 221 L211 260 M269 222 L322 223" stroke-width="6"/>
-  <path d="M160 221 L171 340" stroke-width="6"/>
-</g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600"><g opacity="0.55"><path data-part="far-temple" d="M177 202 Q207 159 245 159 L626 172 Q658 173 682 201 L774 276 Q786 287 776 297 Q765 305 754 293 L657 220 Q646 207 624 206 L244 191 Q218 190 196 224 Z" fill="white"/><path d="M193 204 L178 345 Q176 368 160 379 L140 230 Q138 204 156 195 Q171 189 193 204 Z M160 219 Q153 221 155 236 L168 338 L177 218 Z" fill="white" fill-rule="evenodd"/><path data-part="near-temple" d="M185 215 L659 221 Q718 224 741 265 L803 366 Q814 384 801 391 Q786 399 775 380 L711 292 Q697 273 667 272 L183 263 Z" fill="white"/></g></svg>

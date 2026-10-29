@@ -1,28 +1,33 @@
 {
   "name": "Smart glasses capture guides",
-  "version": 1,
+  "version": 2,
   "canvas": {
     "width": 960,
     "height": 600
   },
   "background": "transparent",
   "opacityBakedIn": 0.55,
-  "usage": "Use at opacity 1; opacity 0.55 is already baked into each asset. Fit with object-fit: contain. No background removal is needed.",
+  "usage": "Use at opacity 1. Opacity 0.55 is baked in. Fit with object-fit: contain.",
+  "sideConvention": "Left and right refer to the wearer. Left-side points left; right-side points right. These generic guides are mirrored.",
   "views": {
     "front": {
       "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-front.png",
-      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-front.svg",
-      "direction": "front"
-    },
-    "side": {
-      "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-side.png",
-      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-side.svg",
-      "direction": "side"
+      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-front.svg"
     },
     "back": {
       "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-back.png",
-      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-back.svg",
-      "direction": "Rear view from wearer side; unfold both temples"
+      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-back.svg"
+    },
+    "left-side": {
+      "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-left-side.png",
+      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-left-side.svg"
+    },
+    "right-side": {
+      "png": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-right-side.png",
+      "svg": "https://raw.githubusercontent.com/kommiter/smart-glasses-capture-assets/main/assets/glasses-right-side.svg"
     }
+  },
+  "legacyAliases": {
+    "side": "left-side"
   }
 }
